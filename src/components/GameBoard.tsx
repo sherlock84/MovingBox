@@ -2,10 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import MovingBox from './MovingBox';
 import './GameBoard.css';
 
-export interface GameBoardProps {
-}
-
-function GameBoard(props: GameBoardProps) {
+function GameBoard() {
     const elementRef = useRef<HTMLDivElement>(null);
     const boxRef = useRef<MovingBox>(null);
 
