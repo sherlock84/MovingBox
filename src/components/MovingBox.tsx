@@ -18,7 +18,7 @@ class MovingBox extends React.Component<MovingBoxProps, MovingBoxState> {
     }
 
     animateTo(x: number, y: number) {
-        
+        this.setState({ x, y });
     }
 
     moveTo(x: number, y: number) {

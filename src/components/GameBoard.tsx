@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import MovingBox from './MovingBox';
+import './GameBoard.css';
 
 export interface GameBoardProps {
 }
@@ -16,8 +17,14 @@ function GameBoard(props: GameBoardProps) {
         boxRef.current?.moveTo(initialX, initialY);
     }, []);
 
+    function handleClick(event: React.MouseEvent<HTMLDivElement>) {
+        const boundingRect = elementRef.current?.getBoundingClientRect();
+        boxRef.current?.animateTo(event.clientX - (boundingRect?.left || 0), 
+            event.clientY - (boundingRect?.top || 0));
+    }
+
     return (
-        <div className="game-board p-2 flex-fill position-relative" ref={elementRef}>
+        <div className="game-board p-2 flex-fill position-relative" onClick={handleClick} ref={elementRef}>
             <MovingBox ref={boxRef} />
         </div>
     );
